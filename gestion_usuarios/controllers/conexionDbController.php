@@ -7,7 +7,7 @@ class ConexionDbController
     private $server_db = '127.0.0.1';
     private $user_db = 'root';
     private $pwd_db = '';
-    private $name_db = 'ejemplo_db';
+    private $name_db = 'notas_bd';
     private $conex;
 
     function __construct()
