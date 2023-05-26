@@ -1,8 +1,8 @@
 <?php
 
-namespace estudiantes;
+namespace estudiante;
 
-class Estudiantes
+class Estudiante
 {
     private $codigo;
     private $nombres;

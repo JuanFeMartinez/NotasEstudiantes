@@ -1,23 +1,23 @@
 <?php
-require '../models/estudiantes.php';
+require '../models/estudiante.php';
 require '../controllers/conexionDbController.php';
 require '../controllers/baseController.php';
-require '../controllers/estudiantesController.php';
-require '../models/notas.php'
+require '../controllers/estudianteController.php';
+require '../models/notas.php';
 
-use estudiantes\Estudiantes;
+use estudiante\Estudiante;
 use usuarioController\UsuarioController;
 use nota\Nota;
 
-$id= empty($_GET['codigo']) ? '' : $_GET['codigo'];
-$titulo= 'Registrar Usuario'
+$codigo= empty($_GET['codigo']) ? '' : $_GET['codigo'];
+$titulo= 'Registrar Estudiante';
 $urlAction = "accion_registro_estudiante.php";
-$usuario = new Usuario();
-if (!empty($id)){
-    $titulo ='Modificar Usuario';
-    $urlAction = "accion_modificar_usuario.php";
-    $usuarioController = new UsuarioController();
-    $usuario = $usuarioController->readRow($id);
+$estudiante = new Estudiante();
+if (!empty($codigo)){
+    $titulo ='Modificar Estudiante';
+    $urlAction = "accion_modificar_estudiante.php";
+    $estudianteController = new EstudianteController();
+    $estudiante = $estudianteController->readRow($codigo);
 }
 ?>
 <!DOCTYPE html>
@@ -44,11 +44,6 @@ if (!empty($id)){
         <label>
             <span>Usuario:</span>
             <input type="text" name="username" value="<?php echo $usuario->getUsername(); ?>" required>
-        </label>
-        <br>
-        <label>
-            <span>Contraseña:</span>
-            <input type="password" name="password" required>
         </label>
         <br>
         <button type="submit">Guardar</button>

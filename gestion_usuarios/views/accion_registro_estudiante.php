@@ -1,22 +1,22 @@
 <?php
-require '../models/usuario.php';
+require '../models/estudiante.php';
 require '../controllers/conexionDbController.php';
 require '../controllers/baseController.php';
-require '../controllers/usuariosController.php';
+require '../controllers/estudianteController.php';
 
-use estudiantes\Estudiantes;
-use estudianteController\estudianteController;
+use estudiante\Estudiante;
+use estudianteController\EstudianteController;
 
-$usuario = new Usuario();
-$usuario->setId($_POST['id']);
-$usuario->setName($_POST['name']);
-$usuario->setUsername($_POST['username']);
-$usuario->setPassword($_POST['password']);
+$estudiante = new Estudiante();
+$estudiante->setCodigo($_POST['codigo']);
+$estudiante->setNombres($_POST['nombres']);
+$estudiante->setApellidos($_POST['apellidos']);
 
-$usuarioController = new UsuarioController();
-$resultado = $usuarioController->create($usuario);
+
+$estudianteController = new EstudianteController();
+$resultado = $estudianteController->create($estudiante);
 if ($resultado) {
-    echo '<h1>Usuarios registrado</h1>';
+    echo '<h1>estudiante registrado</h1>';
 } else {
-    echo '<h1>No se pudo registrar el usuario</h1>';
+    echo '<h1>No se pudo registrar al estudiante</h1>';
 }

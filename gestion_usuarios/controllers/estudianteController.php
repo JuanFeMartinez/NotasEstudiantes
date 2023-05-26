@@ -14,14 +14,18 @@ class EstudianteController extends BaseController
         $sql = 'insert into estudiantes ';
         $sql .= '(codigo,nombres,apellidos) values ';
         $sql .= '(';
-        $sql .= $usuario->getCodigo() . ',';
-        $sql .= '"' . $usuario->getNombre() . '",';
-        $sql .= '"' . $usuario->getApellido() . '"';
+        $sql .= $estudiante->getCodigo() . ',';
+        $sql .= '"' . $estudiante->getNombre() . '",';
+        $sql .= '"' . $estudiante->getApellido() . '"';
         $sql .= ')';
         $conexiondb = new ConexionDbController();
         $resultadoSQL = $conexiondb->execSQL($sql);
         $conexiondb->close();
-        return $resultadoSQL;
+        if($resultadoSQL){
+            return true;
+        }else{
+            return false;
+        }
     }
 
     function createNotas()
@@ -29,17 +33,16 @@ class EstudianteController extends BaseController
         $sql = 'insert into actividad ';
         $conexiondb = new ConexionDbController();
         $resultadoSQL = $conexiondb->execSQL($sql);
-        $usuarios = [];
+        $estudiantes = [];
         while ($registro = $resultadoSQL->fetch_assoc()) {
-            $usuario = new Usuario();
-            $usuario->setId($registro['id']);
-            $usuario->setName($registro['name']);
-            $usuario->setUsername($registro['username']);
-            $usuario->setPassword('');
-            array_push($usuarios, $usuario);
+            $estudiante = new Usuario();
+            $estudiante->setId($registro['codigo']);
+            $estudiante->setName($registro['nombres']);
+            $estudiante->setUsername($registro['apellidos']);
+            array_push($estudiantes, $estudiante);
         }
         $conexiondb->close();
-        return $usuarios;
+        return $estudiantes;
     }
     
     function readRow($id)
@@ -48,33 +51,31 @@ class EstudianteController extends BaseController
         $sql .= ' where id='.$id;
         $conexiondb = new ConexionDbController();
         $resultadoSQL = $conexiondb->execSQL($sql);
-        $usuario = new Usuario();
+        $estudiante = new Estudiante();
         while ($registro = $resultadoSQL->fetch_assoc()) {
-            $usuario->setId($registro['id']);
-            $usuario->setName($registro['name']);
-            $usuario->setUsername($registro['username']);
-            $usuario->setPassword('');
+            $estudiante->setCodigo($registro['codigo']);
+            $estudiante->setNombre($registro['nombres']);
+            $estudiante->setApellido($registro['apellidos']);
         }
         $conexiondb->close();
-        return $usuario;
+        return $estudiante;
     }
 
-    function update($id, $usuario)
+    function update($codigo, $estudiante)
     {
-        $sql = 'update usuarios set ';
-        $sql .= 'name='.$usuario->getName().'",';
-        $sql .= 'username='.$usuario->getUsername().'",';
-        $sql .= 'password='.$usuario->getPassword().'" ';
-        $sql .= ' where id='.$id;
+        $sql = 'update estudiantes set ';
+        $sql .= 'nombres='.$estudiante->getNombre().'",';
+        $sql .= 'apellidos='.$estudiante->getApellidos().'",';
+        $sql .= ' where codigo='.$codigo;
         $conexiondb = new ConexionDbController();
         $resultadoSQL = $conexiondb->execSQL($sql);
         $conexiondb->close();
         return $resultadoSQL;
     }
 
-    function delete($id)
+    function delete($codigo)
     {
-        $sql = 'delete from usuarios where id=' . $id;
+        $sql = 'delete from estudiantes where codigo=' . $codigo;
         $conexiondb = new ConexionDbController();
         $resultadoSQL = $conexiondb->execSQL($sql);
         $conexiondb->close();

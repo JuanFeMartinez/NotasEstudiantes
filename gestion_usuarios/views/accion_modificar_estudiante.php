@@ -7,10 +7,10 @@ require '../controllers/estudianteController.php';
 use estudiante\Estudiante;
 use estudianteController\EstudianteController;
 
-$usuario = new Estudiante();
-$usuario->setId($_POST['codigo']);
-$usuario->setName($_POST['nombres']);
-$usuario->setUsername($_POST['apellidos']);
+$estudiante = new Estudiante();
+$estudiante->setCodigo($_POST['codigo']);
+$estudiante->setNombres($_POST['nombres']);
+$estudiante->setApellidos($_POST['apellidos']);
 
 $estudianteController = new EstudianteController();
 $resultado = $estudianteController->update($estudiante->getId(),$usuario);
