@@ -1,23 +1,22 @@
 <?php
 
-namespace usuarioController;
+namespace estudianteController;
 
 use baseControler\BaseController;
 use conexionDb\ConexionDbController;
-use usuario\Usuario;
+use estudiante\Estudiante;
 
-class UsuarioController extends BaseController
+class EstudianteController extends BaseController
 {
 
-    function create($usuario)
+    function create($estudiante)
     {
-        $sql = 'insert into usuarios ';
-        $sql .= '(id,name,username,password) values ';
+        $sql = 'insert into estudiantes ';
+        $sql .= '(codigo,nombres,apellidos) values ';
         $sql .= '(';
-        $sql .= $usuario->getId() . ',';
-        $sql .= '"' . $usuario->getName() . '",';
-        $sql .= '"' . $usuario->getUsername() . '",';
-        $sql .= '"' . $usuario->getPassword() . '"';
+        $sql .= $usuario->getCodigo() . ',';
+        $sql .= '"' . $usuario->getNombre() . '",';
+        $sql .= '"' . $usuario->getApellido() . '"';
         $sql .= ')';
         $conexiondb = new ConexionDbController();
         $resultadoSQL = $conexiondb->execSQL($sql);
@@ -25,9 +24,9 @@ class UsuarioController extends BaseController
         return $resultadoSQL;
     }
 
-    function read()
+    function createNotas()
     {
-        $sql = 'select * from usuarios';
+        $sql = 'insert into actividad ';
         $conexiondb = new ConexionDbController();
         $resultadoSQL = $conexiondb->execSQL($sql);
         $usuarios = [];

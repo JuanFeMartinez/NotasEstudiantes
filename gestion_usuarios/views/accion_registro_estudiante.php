@@ -4,8 +4,8 @@ require '../controllers/conexionDbController.php';
 require '../controllers/baseController.php';
 require '../controllers/usuariosController.php';
 
-use usuario\Usuario;
-use usuarioController\UsuarioController;
+use estudiantes\Estudiantes;
+use estudianteController\estudianteController;
 
 $usuario = new Usuario();
 $usuario->setId($_POST['id']);

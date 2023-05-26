@@ -1,15 +1,17 @@
 <?php
-require '../models/usuario.php';
+require '../models/estudiantes.php';
 require '../controllers/conexionDbController.php';
 require '../controllers/baseController.php';
-require '../controllers/usuariosController.php';
+require '../controllers/estudiantesController.php';
+require '../models/notas.php'
 
-use usuario\Usuario;
+use estudiantes\Estudiantes;
 use usuarioController\UsuarioController;
+use nota\Nota;
 
-$id= empty($_GET['id']) ? '' : $_GET['id'];
+$id= empty($_GET['codigo']) ? '' : $_GET['codigo'];
 $titulo= 'Registrar Usuario'
-$urlAction = "accion_registro_usuario.php";
+$urlAction = "accion_registro_estudiante.php";
 $usuario = new Usuario();
 if (!empty($id)){
     $titulo ='Modificar Usuario';
