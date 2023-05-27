@@ -5,7 +5,7 @@ require '../controllers/estudianteController.php';
 require '../models/actividad.php';
 
 use notaController\NotaController;
-use nota\Nota;
+use actividades\Actividades;
 
 $codigo = $_GET['codigo'];
 $id= empty($_GET['id']) ? '' : $_GET['id'];

@@ -33,7 +33,7 @@ if (!empty($id)){
     <form action="<?php echo $urlAction;?>" method="post">
         <label>
             <span>Codigo:</span>
-            <input type="number" name="codigo" min="1" value="<?php echo $estudiante->getCodigo(); ?>" required>
+            <input type="number" name="codigo" min="1" value="<?php echo $estudiante->getCodigo(); ?>" readonly>
         </label>
         <br>
         <label>
