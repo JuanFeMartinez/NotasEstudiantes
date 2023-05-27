@@ -56,23 +56,25 @@ $notas = $notaController->read($codigo);
         </table>
         <h3>
             <?php
-            if($prom>3){
+                    if ($prom !=0){
+                        echo '<p>El promedio es '.$promedio.'</p>';
+                        }
+                        if($prom<3 && $prom>0){
+                            echo '<h1 style="color: red">No aprobaste</h1>';
+                        }else if ($prom==0){
+                            echo '<h1 style="color: purple">Registre notas primero</h1>';
+                        }else{
+                            echo '<h1 style="color: green">Felicidades, aprobaste</h1>';
+                        }
+           /*if($prom>3){
                 echo '<h1 style="color: green">PASATES, t felisito </h1>';
-            }else{
-                echo '<h1 style="color: red">PERDITES, bobo </h1>';
-            }
-            ?>
-        </h3>
-        <h3>
-            <?php
-            if($prom=0){
+            } else if ($prom=0){
                 echo '<h1 style="color: purple">primero ingrese notas </h1>';
             }else{
                 echo '<h1 style="color: red">PERDITES, bobo </h1>';
-            }
+            }*/
             ?>
         </h3>
-
     </main>
 </body>
 
