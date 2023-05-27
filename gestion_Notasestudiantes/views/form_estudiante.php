@@ -7,7 +7,7 @@ require '../models/actividad.php';
 
 use estudiante\Estudiante;
 use estudianteController\EstudianteController;
-use nota\Nota;
+use actividades\Actividades;
 
 $id= empty($_GET['codigo']) ? '' : $_GET['codigo'];
 $titulo= 'Registrar Estudiante';
@@ -38,12 +38,12 @@ if (!empty($id)){
         <br>
         <label>
             <span>Nombre:</span>
-            <input type="text" name="nombre" value="<?php echo $estudiante->getNombres(); ?>" required>
+            <input type="text" name="nombres" value="<?php echo $estudiante->getNombres(); ?>" required>
         </label>
         <br>
         <label>
             <span>Apellido:</span>
-            <input type="text" name="apellido" value="<?php echo $estudiante->getApellidos(); ?>" required>
+            <input type="text" name="apellidos" value="<?php echo $estudiante->getApellidos(); ?>" required>
         </label>
         <br>
         <button type="submit">Guardar</button>

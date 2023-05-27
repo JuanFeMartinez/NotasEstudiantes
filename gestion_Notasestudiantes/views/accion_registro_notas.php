@@ -1,5 +1,5 @@
 <?php
-require '../models/usuario.php';
+require '../models/actividad.php';
 require '../controllers/conexionDbController.php';
 require '../controllers/baseController.php';
 require '../controllers/usuariosController.php';

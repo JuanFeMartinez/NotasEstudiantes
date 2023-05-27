@@ -7,10 +7,10 @@ require '../controllers/estudianteController.php';
 
 use estudiante\Estudiante;
 use estudianteController\EstudianteController;
-use nota\Nota;
+use actividades\Actividades;
 
 $estudiante = new Estudiante();
-$nota = new Nota();
+$actividades = new Actividades();
 $estudiante->setCodigo($_POST['codigo']);
 $estudiante->setNombres($_POST['nombres']);
 $estudiante->setApellidos($_POST['apellidos']);
@@ -23,3 +23,5 @@ if ($resultado) {
 } else {
     echo '<h1>No se pudo registrar al estudiante</h1>';
 }
+?>
+<a href="../index.php">Volver a inicio</a>

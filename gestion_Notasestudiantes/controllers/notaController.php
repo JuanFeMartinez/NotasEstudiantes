@@ -4,7 +4,7 @@ namespace notaController;
 
 use baseController\BaseController;
 use conexionDb\ConexionDbController;
-use nota\Nota;
+use actividades\Actividades;
 
 class NotaController extends BaseController
 {

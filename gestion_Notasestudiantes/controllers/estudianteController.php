@@ -52,8 +52,8 @@ class EstudianteController extends BaseController
     
     function readRow($id)
     {
-        $sql = 'select * from usuarios';
-        $sql .= ' where id='.$id;
+        $sql = 'select * from estudiantes';
+        $sql .= ' where codigo='.$id;
         $conexiondb = new ConexionDbController();
         $resultadoSQL = $conexiondb->execSQL($sql);
         $estudiante = new Estudiante();
@@ -69,9 +69,10 @@ class EstudianteController extends BaseController
     function update($codigo, $estudiante)
     {
         $sql = 'update estudiantes set ';
-        $sql .= 'nombres='.$estudiante->getNombres().'",';
-        $sql .= 'apellidos='.$estudiante->getApellidos().'",';
+        $sql .= "nombres='".$estudiante->getNombres()."',";
+        $sql .= "apellidos='".$estudiante->getApellidos()."'";
         $sql .= ' where codigo='.$codigo;
+        echo $sql;
         $conexiondb = new ConexionDbController();
         $resultadoSQL = $conexiondb->execSQL($sql);
         $conexiondb->close();
