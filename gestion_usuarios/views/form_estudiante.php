@@ -6,7 +6,7 @@ require '../controllers/estudianteController.php';
 require '../models/notas.php';
 
 use estudiante\Estudiante;
-use usuarioController\UsuarioController;
+use estudianteController\EstudianteController;
 use nota\Nota;
 
 $codigo= empty($_GET['codigo']) ? '' : $_GET['codigo'];

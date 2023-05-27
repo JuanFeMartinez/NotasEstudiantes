@@ -35,10 +35,10 @@ class EstudianteController extends BaseController
         $resultadoSQL = $conexiondb->execSQL($sql);
         $estudiantes = [];
         while ($registro = $resultadoSQL->fetch_assoc()) {
-            $estudiante = new Usuario();
-            $estudiante->setId($registro['codigo']);
-            $estudiante->setName($registro['nombres']);
-            $estudiante->setUsername($registro['apellidos']);
+            $estudiante = new Estudiante();
+            $estudiante->setCodigo($registro['codigo']);
+            $estudiante->setNombre($registro['nombres']);
+            $estudiante->setApellido($registro['apellidos']);
             array_push($estudiantes, $estudiante);
         }
         $conexiondb->close();
