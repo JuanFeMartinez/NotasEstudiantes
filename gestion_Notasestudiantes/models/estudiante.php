@@ -14,7 +14,7 @@ class Estudiante
     }
     public function setCodigo($value)
     {
-        $this->id = $codigo;
+        $this->codigo = $value;
     }
 
     public function getNombres()

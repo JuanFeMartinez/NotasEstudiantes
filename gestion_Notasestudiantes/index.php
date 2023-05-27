@@ -2,9 +2,9 @@
 require 'models/estudiante.php';
 require 'controllers/conexionDbController.php';
 require 'controllers/baseController.php';
-require 'controllers/estudiantesController.php';
+require 'controllers/estudianteController.php';
 
-use estudianteController\estudianteController;
+use estudianteController\EstudianteController;
 
 $estudianteController = new EstudianteController();
 
@@ -35,8 +35,8 @@ $estudiantes = $estudianteController->read();
                 foreach ($estudiantes as $estudiante) {
                     echo '<tr>';
                     echo '  <td>' . $estudiante->getCodigo() . '</td>';
-                    echo '  <td>' . $estudiante->getNombre() . '</td>';
-                    echo '  <td>' . $estudiante->getApellido() . '</td>';
+                    echo '  <td>' . $estudiante->getNombres() . '</td>';
+                    echo '  <td>' . $estudiante->getApellidos() . '</td>';
                     echo '  <td>';
                     echo '      <a href="views/form_estudiante.php?codigo=' . $estudiante->getCodigo() . '">modificar</a>';
                     echo '      <a href="views/accion_borrar_estudiante.php?codigo=' . $estudiante->getCodigo() . '">borrar</a>';

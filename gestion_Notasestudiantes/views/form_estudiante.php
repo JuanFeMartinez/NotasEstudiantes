@@ -3,21 +3,21 @@ require '../models/estudiante.php';
 require '../controllers/conexionDbController.php';
 require '../controllers/baseController.php';
 require '../controllers/estudianteController.php';
-require '../models/notas.php';
+require '../models/actividad.php';
 
 use estudiante\Estudiante;
 use estudianteController\EstudianteController;
 use nota\Nota;
 
-$codigo= empty($_GET['codigo']) ? '' : $_GET['codigo'];
+$id= empty($_GET['codigo']) ? '' : $_GET['codigo'];
 $titulo= 'Registrar Estudiante';
 $urlAction = "accion_registro_estudiante.php";
 $estudiante = new Estudiante();
-if (!empty($codigo)){
+if (!empty($id)){
     $titulo ='Modificar Estudiante';
     $urlAction = "accion_modificar_estudiante.php";
     $estudianteController = new EstudianteController();
-    $estudiante = $estudianteController->readRow($codigo);
+    $estudiante = $estudianteController->readRow($id);
 }
 ?>
 <!DOCTYPE html>
@@ -32,18 +32,18 @@ if (!empty($codigo)){
     <h1><?php echo $titulo; ?></h1>
     <form action="<?php echo $urlAction;?>" method="post">
         <label>
-            <span>Id:</span>
-            <input type="number" name="id" min="1" value="<?php echo $usuario->getId(); ?>" required>
+            <span>Codigo:</span>
+            <input type="number" name="codigo" min="1" value="<?php echo $estudiante->getCodigo(); ?>" required>
         </label>
         <br>
         <label>
             <span>Nombre:</span>
-            <input type="text" name="name" value="<?php echo $usuario->getName(); ?>" required>
+            <input type="text" name="nombre" value="<?php echo $estudiante->getNombres(); ?>" required>
         </label>
         <br>
         <label>
-            <span>Usuario:</span>
-            <input type="text" name="username" value="<?php echo $usuario->getUsername(); ?>" required>
+            <span>Apellido:</span>
+            <input type="text" name="apellido" value="<?php echo $estudiante->getApellidos(); ?>" required>
         </label>
         <br>
         <button type="submit">Guardar</button>

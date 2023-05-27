@@ -2,7 +2,7 @@
 
 namespace estudianteController;
 
-use baseControler\BaseController;
+use baseController\BaseController;
 use conexionDb\ConexionDbController;
 use estudiante\Estudiante;
 
@@ -15,8 +15,8 @@ class EstudianteController extends BaseController
         $sql .= '(codigo,nombres,apellidos) values ';
         $sql .= '(';
         $sql .= $estudiante->getCodigo() . ',';
-        $sql .= '"' . $estudiante->getNombre() . '",';
-        $sql .= '"' . $estudiante->getApellido() . '"';
+        $sql .= '"' . $estudiante->getNombres() . '",';
+        $sql .= '"' . $estudiante->getApellidos() . '"';
         $sql .= ')';
         $conexiondb = new ConexionDbController();
         $resultadoSQL = $conexiondb->execSQL($sql);
@@ -28,21 +28,26 @@ class EstudianteController extends BaseController
         }
     }
 
-    function createNotas()
+    function read()
     {
-        $sql = 'insert into actividad ';
+        $sql = 'select * from estudiantes ';
         $conexiondb = new ConexionDbController();
         $resultadoSQL = $conexiondb->execSQL($sql);
         $estudiantes = [];
         while ($registro = $resultadoSQL->fetch_assoc()) {
             $estudiante = new Estudiante();
             $estudiante->setCodigo($registro['codigo']);
-            $estudiante->setNombre($registro['nombres']);
-            $estudiante->setApellido($registro['apellidos']);
+            $estudiante->setNombres($registro['nombres']);
+            $estudiante->setApellidos($registro['apellidos']);
             array_push($estudiantes, $estudiante);
         }
         $conexiondb->close();
         return $estudiantes;
+    }
+
+    function createNotas()
+    {
+
     }
     
     function readRow($id)
@@ -54,8 +59,8 @@ class EstudianteController extends BaseController
         $estudiante = new Estudiante();
         while ($registro = $resultadoSQL->fetch_assoc()) {
             $estudiante->setCodigo($registro['codigo']);
-            $estudiante->setNombre($registro['nombres']);
-            $estudiante->setApellido($registro['apellidos']);
+            $estudiante->setNombres($registro['nombres']);
+            $estudiante->setApellidos($registro['apellidos']);
         }
         $conexiondb->close();
         return $estudiante;
@@ -64,7 +69,7 @@ class EstudianteController extends BaseController
     function update($codigo, $estudiante)
     {
         $sql = 'update estudiantes set ';
-        $sql .= 'nombres='.$estudiante->getNombre().'",';
+        $sql .= 'nombres='.$estudiante->getNombres().'",';
         $sql .= 'apellidos='.$estudiante->getApellidos().'",';
         $sql .= ' where codigo='.$codigo;
         $conexiondb = new ConexionDbController();
