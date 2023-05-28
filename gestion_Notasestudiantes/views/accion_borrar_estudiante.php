@@ -14,5 +14,6 @@ if ($resultado) {
     echo '<h1>No se pudo borrar al estudiante</h1>';
 }
 ?>
+<br>
 <a href="../index.php">Volver a inicio</a>
 

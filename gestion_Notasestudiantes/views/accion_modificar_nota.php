@@ -7,13 +7,13 @@ require '../controllers/notaController.php';
 use actividades\Actividades;
 use notaController\NotaController;
 
-$nota = new Nota();
-$nota->setId($_POST['id']);
-$nota->setDescripcion($_POST['descripcion']);
-$nota->setNota($_POST['nota']);
+$actividades = new Actividades();
+$actividades->setId($_POST['id']);
+$actividades->setDescripcion($_POST['descripcion']);
+$actividades->setNota($_POST['nota']);
 
 $notaController = new NotaController();
-$resultado = $notaController->update($nota->getId(),$nota);
+$resultado = $notaController->update($actividades->getId(),$actividades);
 if ($resultado) {
     echo '<h1>nota modificada</h1>';
 } else {

@@ -13,4 +13,6 @@ if ($resultado) {
 } else {
     echo '<h1>No se pudo borrar la nota</h1>';
 }
-
+?>
+<br>
+<a href="../index.php">Volver a inicio</a>

@@ -45,15 +45,10 @@ class EstudianteController extends BaseController
         return $estudiantes;
     }
 
-    function createNotas()
-    {
-
-    }
-    
-    function readRow($id)
+    function readRow($codigo)
     {
         $sql = 'select * from estudiantes';
-        $sql .= ' where codigo='.$id;
+        $sql .= ' where codigo='.$codigo;
         $conexiondb = new ConexionDbController();
         $resultadoSQL = $conexiondb->execSQL($sql);
         $estudiante = new Estudiante();

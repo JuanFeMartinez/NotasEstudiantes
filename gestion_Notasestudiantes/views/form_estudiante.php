@@ -6,8 +6,9 @@ require '../controllers/estudianteController.php';
 require '../models/actividad.php';
 
 use estudiante\Estudiante;
-use estudianteController\EstudianteController;
 use actividades\Actividades;
+use estudianteController\EstudianteController;
+
 
 $id= empty($_GET['codigo']) ? '' : $_GET['codigo'];
 $titulo= 'Registrar Estudiante';
@@ -33,7 +34,7 @@ if (!empty($id)){
     <form action="<?php echo $urlAction;?>" method="post">
         <label>
             <span>Codigo:</span>
-            <input type="number" name="codigo" min="1" value="<?php echo $estudiante->getCodigo(); ?>" readonly>
+            <input type="number" name="codigo" min="1" value="<?php echo $estudiante->getCodigo(); ?>" required>
         </label>
         <br>
         <label>

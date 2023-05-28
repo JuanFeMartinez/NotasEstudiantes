@@ -17,7 +17,7 @@ class Actividades
     {
         $this->id = $value;
     }
-
+    
     public function getDescripcion()
     {
         return $this->descripcion;

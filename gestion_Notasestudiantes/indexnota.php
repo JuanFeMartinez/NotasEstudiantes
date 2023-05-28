@@ -8,9 +8,9 @@ use actividades\Actividades;
 use notaController\NotaController;
 $codigo = $_GET['codigo'];
 
-$notaController = new NotaController();
+$estudianteController = new NotaController();
 
-$notas = $notaController->read($codigo);
+$actividad = $estudianteController->read($codigo);
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -23,7 +23,7 @@ $notas = $notaController->read($codigo);
 <body>
     <main>
         <h1>Lista de Notas</h1>
-        <a href="views/form_nota.php">Registrar Nota</a>
+        <a href="views/form_nota.php?codigo=<?php echo $codigo; ?>">Registrar Nota</a>
         <table>
             <thead>
                 <tr>
@@ -37,18 +37,19 @@ $notas = $notaController->read($codigo);
                 $prom=0;
                 $cont=0;
                 $sumaN=0;
-                foreach ($notas as $nota) {
+                foreach ($actividad as $actividades) {
+                    $cont=1+$cont;
                     echo '<tr>';
-                    echo '  <td>' . $nota->getId() . '</td>';
-                    echo '  <td>' . $nota->getDescripcion() . '</td>';
-                    echo '  <td>' . $nota->getNota() . '</td>';
-                    echo '  <td>' . $nota->getCodEst() . '</td>';
+                    echo '  <td>' . $actividades->getId() . '</td>';
+                    echo '  <td>' . $actividades->getDescripcion() . '</td>';
+                    echo '  <td>' . $actividades->getNota() . '</td>';
+                    echo '  <td>' . $actividades->getCodEst() . '</td>';
                     echo '  <td>';
-                    $sumaN=$nota->getNota()+$sumaN;
+                    $sumaN=$actividades->getNota()+$sumaN;
                     $prom=$sumaN/$cont;
-                    echo '      <a href="views/form_nota.php?codigo=' . $nota->getId() . '">modificar</a>';
-                    echo '      <a href="views/form_estudiante.php?codigo=' . $nota->getCodEst() . '"></a>';
-                    echo '      <a href="views/accion_borrar_estudiante.php?codigo=' . $nota->getId() . '">borrar</a>';
+                    echo '      <a href="views/form_nota.php?codigo=' . $actividades->getId() . '">modificar</a>';
+                    echo '      <a href="views/form_estudiante.php?codigo=' . $actividades->getCodEst() . '"></a>';
+                    echo '      <a href="views/accion_borrar_estudiante.php?codigo=' . $actividades->getId() . '">borrar</a>';
                     echo '  </td>';
                     echo '</tr>';
                 }

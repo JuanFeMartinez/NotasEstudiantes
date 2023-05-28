@@ -4,9 +4,10 @@ namespace notaController;
 
 use baseController\BaseController;
 use conexionDb\ConexionDbController;
+use estudiante\Estudiante;
 use actividades\Actividades;
 
-class NotaController extends BaseController
+class NotaController
 {
 
     function create($nota)
@@ -16,7 +17,7 @@ class NotaController extends BaseController
         $sql .= '(';
         $sql .= $nota->getId() . ',';
         $sql .= '"' . $nota->getDescripcion() . '",';
-        $sql .= '"' . $nota->getNota() . '"';
+        $sql .= '"' . $nota->getNota() . '",';
         $sql .= '"' . $nota->getCodEst() . '"';
         $sql .= ')';
         $conexiondb = new ConexionDbController();
@@ -25,9 +26,9 @@ class NotaController extends BaseController
         return $resultadoSQL;
     }
 
-    function read()
+    function read($codigo)
     {
-        $sql = 'select * from actividades ';
+        $sql = 'select * from actividades where codigoEstudiante = '.$codigo;
         $conexiondb = new ConexionDbController();
         $resultadoSQL = $conexiondb->execSQL($sql);
         $notas = [];
@@ -62,9 +63,8 @@ class NotaController extends BaseController
     function update($id, $nota)
     {
         $sql = 'update actividades set ';
-        $sql .= 'descripcion= "'.$nota->getDescripcion().'"';
+        $sql .= 'descripcion= "'.$nota->getDescripcion().'",';
         $sql .= 'nota= "'.$nota->getNota().'"';
-        $sql .= 'codigoEstudiante= "'.$nota->getCodEst().'"';
         $sql .= ' where Id='.$id;
         $conexiondb = new ConexionDbController();
         $resultadoSQL = $conexiondb->execSQL($sql);

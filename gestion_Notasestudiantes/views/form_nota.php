@@ -1,23 +1,24 @@
 <?php
+require '../models/actividad.php';
 require '../controllers/conexionDbController.php';
 require '../controllers/baseController.php';
 require '../controllers/notaController.php';
-require '../models/actividad.php';
 
-use notaController\NotaController;
 use actividades\Actividades;
+use notaController\NotaController;
 
-$notas = new Actividades();
+
+$actividades = new Actividades();
 $id= empty($_GET['id']) ? '' : $_GET['id'];
 $titulo= 'Registrar Nota';
-$urlAction = "accion_registro_nota.php?codigoEstudiante=". $notas->getCodEst();
+$urlAction = "accion_registro_nota.php?codigoEstudiante=". $actividades->getCodEst();
 
 
 if (!empty($id)){
     $titulo ='Modificar Nota';
     $urlAction = "accion_modificar_nota.php";
     $notaController = new NotaController();
-    $notas = $notaController->readRow($id);
+    $actividades = $notaController->readRow($id);
 }else {$codigo = $_GET['codigo'];}
 ?>
 <!DOCTYPE html>
@@ -33,17 +34,17 @@ if (!empty($id)){
     <form action="<?php echo $urlAction;?>" method="post">
         <label>
             <span>Id:</span>
-            <input type="number" name="id" min="1" value="<?php echo $notas->getId(); ?>" required>
+            <input type="number" name="id" min="1" value="<?php echo $actividades->getId(); ?>" required>
         </label>
         <br>
         <label>
             <span>Descripcion:</span>
-            <input type="text" name="descripcion" value="<?php echo $notas->getDescripcion(); ?>" required>
+            <input type="text" name="descripcion" value="<?php echo $actividades->getDescripcion(); ?>" required>
         </label>
         <br>
         <label>
             <span>Nota:</span>
-            <input type="text" name="nota" value="<?php echo $notas->getNota(); ?>" min="0" max="50" required>
+            <input type="text" name="nota" value="<?php echo $actividades->getNota(); ?>" min="0" max="50" required>
         </label>
         <br>
         <label>

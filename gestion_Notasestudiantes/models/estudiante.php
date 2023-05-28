@@ -25,6 +25,7 @@ class Estudiante
     {
         $this->nombres = $value;
     }
+    
     public function getApellidos()
     {
         return $this->apellidos;
