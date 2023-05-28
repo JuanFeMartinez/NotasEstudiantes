@@ -14,6 +14,8 @@ $id= empty($_GET['codigo']) ? '' : $_GET['codigo'];
 $titulo= 'Registrar Estudiante';
 $urlAction = "accion_registro_estudiante.php";
 $estudiante = new Estudiante();
+$nota = new Nota();
+
 if (!empty($id)){
     $titulo ='Modificar Estudiante';
     $urlAction = "accion_modificar_estudiante.php";

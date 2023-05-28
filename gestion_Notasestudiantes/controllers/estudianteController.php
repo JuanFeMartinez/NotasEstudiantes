@@ -5,6 +5,7 @@ namespace estudianteController;
 use baseController\BaseController;
 use conexionDb\ConexionDbController;
 use estudiante\Estudiante;
+use actividades\Actividades;
 
 class EstudianteController extends BaseController
 {
@@ -21,11 +22,7 @@ class EstudianteController extends BaseController
         $conexiondb = new ConexionDbController();
         $resultadoSQL = $conexiondb->execSQL($sql);
         $conexiondb->close();
-        if($resultadoSQL){
-            return true;
-        }else{
-            return false;
-        }
+        return $resultadoSQL;
     }
 
     function read()

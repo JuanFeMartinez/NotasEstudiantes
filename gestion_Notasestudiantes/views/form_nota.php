@@ -1,5 +1,6 @@
 <?php
 require '../models/actividad.php';
+require '../models/estudiante.php';
 require '../controllers/conexionDbController.php';
 require '../controllers/baseController.php';
 require '../controllers/notaController.php';
@@ -11,7 +12,7 @@ use notaController\NotaController;
 $actividades = new Actividades();
 $id= empty($_GET['id']) ? '' : $_GET['id'];
 $titulo= 'Registrar Nota';
-$urlAction = "accion_registro_nota.php?codigoEstudiante=". $actividades->getCodEst();
+$urlAction = "accion_registro_notas.php?codigoEstudiante=". $actividades->getCodEst();
 
 
 if (!empty($id)){
@@ -44,7 +45,7 @@ if (!empty($id)){
         <br>
         <label>
             <span>Nota:</span>
-            <input type="text" name="nota" value="<?php echo $actividades->getNota(); ?>" min="0" max="50" required>
+            <input type="text" name="nota" value="<?php echo $actividades->getNota(); ?>" min="" max="50" required>
         </label>
         <br>
         <label>

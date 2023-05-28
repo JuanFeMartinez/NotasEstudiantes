@@ -59,7 +59,7 @@ $actividad = $estudianteController->read($codigo);
         <h3>
             <?php
                     if ($prom !=0){
-                        echo '<p>El promedio es '.$promedio.'</p>';
+                        echo '<p>El promedio es '.$prom.'</p>';
                         }
                         if($prom<3 && $prom>0){
                             echo '<h1 style="color: red">No aprobaste</h1>';

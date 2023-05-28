@@ -10,15 +10,15 @@ use actividades\Actividades;
 class NotaController
 {
 
-    function create($nota)
+    function create($actividades)
     {
         $sql = 'insert into actividades ';
         $sql .= '(id,descripcion,nota,codigoEstudiante) values ';
         $sql .= '(';
-        $sql .= $nota->getId() . ',';
-        $sql .= '"' . $nota->getDescripcion() . '",';
-        $sql .= '"' . $nota->getNota() . '",';
-        $sql .= '"' . $nota->getCodEst() . '"';
+        $sql .= $actividades->getId() . ',';
+        $sql .= '"' . $actividades->getDescripcion() . '",';
+        $sql .= '"' . $actividades->getNota() . '",';
+        $sql .= '"' . $actividades->getCodEst() . '"';
         $sql .= ')';
         $conexiondb = new ConexionDbController();
         $resultadoSQL = $conexiondb->execSQL($sql);
@@ -31,17 +31,17 @@ class NotaController
         $sql = 'select * from actividades where codigoEstudiante = '.$codigo;
         $conexiondb = new ConexionDbController();
         $resultadoSQL = $conexiondb->execSQL($sql);
-        $notas = [];
+        $actividad = [];
         while ($registro = $resultadoSQL->fetch_assoc()) {
-            $nota = new Nota();
-            $nota->setId($registro['id']);
-            $nota->setdescripcion($registro['descripcion']);
-            $nota ->setNota($registro['nota']);
-            $nota ->setCodEst($registro['codigoEstudiante']);
-            array_push($notas, $nota);
+            $actividades = new Actividades();
+            $actividades->setId($registro['id']);
+            $actividades->setdescripcion($registro['descripcion']);
+            $actividades ->setNota($registro['nota']);
+            $actividades ->setCodEst($registro['codigoEstudiante']);
+            array_push($actividad, $actividades);
         }
         $conexiondb->close();
-        return $notas;
+        return $actividad;
     }
     
     function readRow($id)
@@ -50,21 +50,21 @@ class NotaController
         $sql .= ' where id='.$id;
         $conexiondb = new ConexionDbController();
         $resultadoSQL = $conexiondb->execSQL($sql);
-        $nota = new Nota();
+        $actividades = new Actividades();
         while ($registro = $resultadoSQL->fetch_assoc()) {
-            $nota->setId($registro['id']);
-            $nota->setDescripcion($registro['descripcion']);
-            $nota->setNota($registro['nota']);
+            $actividades->setId($registro['id']);
+            $actividades->setDescripcion($registro['descripcion']);
+            $actividades->setNota($registro['nota']);
         }
         $conexiondb->close();
-        return $notas;
+        return $actividad;
     }
 
-    function update($id, $nota)
+    function update($id, $actividades)
     {
         $sql = 'update actividades set ';
-        $sql .= 'descripcion= "'.$nota->getDescripcion().'",';
-        $sql .= 'nota= "'.$nota->getNota().'"';
+        $sql .= 'descripcion= "'.$actividades->getDescripcion().'",';
+        $sql .= 'nota= "'.$actividades->getNota().'"';
         $sql .= ' where Id='.$id;
         $conexiondb = new ConexionDbController();
         $resultadoSQL = $conexiondb->execSQL($sql);

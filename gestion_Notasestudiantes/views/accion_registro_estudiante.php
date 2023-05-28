@@ -14,10 +14,11 @@ $actividades = new Actividades();
 $estudiante->setCodigo($_POST['codigo']);
 $estudiante->setNombres($_POST['nombres']);
 $estudiante->setApellidos($_POST['apellidos']);
+$actividades->setCodEst($_POST['codigo']);
 
 
 $estudianteController = new EstudianteController();
-$resultado = $estudianteController->create($estudiante);
+$resultado = $estudianteController->create($estudiante,$nota);
 if ($resultado) {
     echo '<h1>estudiante registrado</h1>';
 } else {
