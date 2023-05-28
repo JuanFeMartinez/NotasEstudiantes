@@ -20,7 +20,7 @@ class Actividades
 
     public function getDescripcion()
     {
-        return $this->getdescripcion;
+        return $this->descripcion;
     }
     public function setDescripcion($value)
     {
@@ -36,11 +36,11 @@ class Actividades
         $this->nota = $value;
     }
 
-    public function getCodigoestudiantes()
+    public function getCodEst()
     {
         return $this->codigoEstudiantes;
     }
-    public function setCodigoEstudiantes($value)
+    public function setCodEst($value)
     {
         $this->codigoEstudiantes = $value;
     }

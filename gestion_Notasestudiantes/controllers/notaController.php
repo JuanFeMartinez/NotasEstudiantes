@@ -32,7 +32,7 @@ class NotaController extends BaseController
         $resultadoSQL = $conexiondb->execSQL($sql);
         $notas = [];
         while ($registro = $resultadoSQL->fetch_assoc()) {
-            $nota = new Estudiante();
+            $nota = new Nota();
             $nota->setId($registro['id']);
             $nota->setdescripcion($registro['descripcion']);
             $nota ->setNota($registro['nota']);
@@ -43,21 +43,21 @@ class NotaController extends BaseController
         return $notas;
     }
     
-   /* function readRow($id)
+    function readRow($id)
     {
-        $sql = 'select * from usuarios';
+        $sql = 'select * from actividades';
         $sql .= ' where id='.$id;
         $conexiondb = new ConexionDbController();
         $resultadoSQL = $conexiondb->execSQL($sql);
-        $estudiante = new Estudiante();
+        $nota = new Nota();
         while ($registro = $resultadoSQL->fetch_assoc()) {
-            $estudiante->setCodigo($registro['codigo']);
-            $estudiante->setNombres($registro['nombres']);
-            $estudiante->setApellidos($registro['apellidos']);
+            $nota->setId($registro['id']);
+            $nota->setDescripcion($registro['descripcion']);
+            $nota->setNota($registro['nota']);
         }
         $conexiondb->close();
-        return $estudiante;
-    }*/
+        return $notas;
+    }
 
     function update($id, $nota)
     {

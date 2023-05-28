@@ -6,6 +6,7 @@ require 'controllers/notaController.php';
 
 use actividades\Actividades;
 use notaController\NotaController;
+$codigo = $_GET['codigo'];
 
 $notaController = new NotaController();
 

@@ -4,14 +4,13 @@ require '../controllers/conexionDbController.php';
 require '../controllers/baseController.php';
 require '../controllers/notaController.php';
 
-use nota\Nota;
+use actividades\Actividades;
 use notaController\NotaController;
 
 $nota = new Nota();
 $nota->setId($_POST['id']);
 $nota->setDescripcion($_POST['descripcion']);
 $nota->setNota($_POST['nota']);
-$nota->setCodEst($_POST['codEstudiante']);
 
 $notaController = new NotaController();
 $resultado = $notaController->update($nota->getId(),$nota);
